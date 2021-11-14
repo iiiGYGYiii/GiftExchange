@@ -7,7 +7,7 @@
     "start": "if(Test-Path -Path ./build){node ./build/index.js}else{npm run run:build}",
     "run:build": "npm run build && node ./build/index.js",
     "build": "tsc",
-    "dev": "nodemon ./src/index.ts",
+    "dev": "cross-env NODE_ENV=development nodemon ./src/index.ts",
     "lint": "eslint"
   },
   "repository": {
