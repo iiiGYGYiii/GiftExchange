@@ -7,7 +7,7 @@
     "start": "if(Test-Path -Path ./build){node ./build/index.js}else{npm run run:build}",
     "run:build": "npm run build && node ./build/index.js",
     "build": "tsc",
-    "dev": "nodemon ./src/index.ts",
+    "dev": "cross-env NODE_ENV=development nodemon ./src/index.ts",
     "lint": "eslint"
   },
   "repository": {
@@ -27,20 +27,23 @@
   },
   "homepage": "https://github.com/iiiGYGYiii/GiftExchange#readme",
   "devDependencies": {
-    "@types/cors": "^2.8.12",
-    "@types/express": "^4.17.13",
-    "@types/morgan": "^1.9.3",
-    "@typescript-eslint/eslint-plugin": "^5.3.1",
-    "@typescript-eslint/parser": "^5.3.1",
-    "eslint": "^8.2.0",
-    "nodemon": "^2.0.15",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.4.4"
+    "@types/cors": "2.8.12",
+    "@types/express": "4.17.13",
+    "@types/mongoose": "^5.11.97",
+    "@types/morgan": "1.9.3",
+    "@typescript-eslint/eslint-plugin": "5.3.1",
+    "@typescript-eslint/parser": "5.3.1",
+    "cross-env": "7.0.3",
+    "eslint": "8.2.0",
+    "nodemon": "2.0.15",
+    "ts-node": "10.4.0",
+    "typescript": "4.4.4"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "morgan": "^1.10.0"
+    "cors": "2.8.5",
+    "dotenv": "10.0.0",
+    "express": "4.17.1",
+    "mongoose": "^6.0.12",
+    "morgan": "1.10.0"
   }
 }
