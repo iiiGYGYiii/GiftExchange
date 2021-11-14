@@ -14,7 +14,7 @@ describe("Identifier Test", () => {
   it("Identifier always to length of 9", () => {
     const oneDigit = 0;
     expect(limitStringToSizeNine(oneDigit)).toHaveLength(9);
-    const tenDigits = 9999999999;
+    const tenDigits = 1234567890;
     expect(limitStringToSizeNine(tenDigits)).toHaveLength(9);
   });
 });
