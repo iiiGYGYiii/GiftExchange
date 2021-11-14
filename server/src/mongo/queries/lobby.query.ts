@@ -6,18 +6,21 @@ import { shuffleExchangeList } from "../../utils/exchange";
 export async function createLobby(
   lobbyOwner: string,
   participants: string[]
-): Promise<void> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): Promise<any> {
   const shuffledList = shuffleExchangeList(participants);
   const lobbyData: LobbyType = {
     lobbyOwner,
     participants,
     shuffledList,
+    _id: createIdentifier(),
   };
   const newLobby = new Lobby(lobbyData);
-  newLobby._id = createIdentifier();
   try {
-    await newLobby.save();
+    return await newLobby.save();
   } catch (error) {
-    console.error("WTF! XD");
+    return {
+      error: "There ocurred and error, try again later.",
+    };
   }
 }

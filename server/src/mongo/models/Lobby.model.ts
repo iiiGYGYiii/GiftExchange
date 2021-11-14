@@ -5,9 +5,10 @@ export interface LobbyType {
   participants: string[];
   allHaveParticipated?: boolean;
   shuffledList: string[];
+  _id: string;
 }
 
-const lobbySchema = new mongoose.Schema<LobbyType>(
+const lobbySchema = new mongoose.Schema<Omit<LobbyType, "_id">>(
   {
     lobbyOwner: {
       type: String,
@@ -40,14 +41,12 @@ lobbySchema.set("toJSON", {
   transform: (
     _document,
     returnedObject: LobbyType & { _id: string; __v?: string; id: string }
-  ) => {
-    return {
-      id: returnedObject._id,
-      lobbyOwner: returnedObject.lobbyOwner,
-      participants: returnedObject.participants,
-      shuffledList: returnedObject.shuffledList,
-    };
-  },
+  ) => ({
+    id: returnedObject._id,
+    lobbyOwner: returnedObject.lobbyOwner,
+    participants: returnedObject.participants,
+    shuffledList: returnedObject.shuffledList,
+  }),
 });
 
 export default mongoose.model<LobbyType>("Lobby", lobbySchema);
