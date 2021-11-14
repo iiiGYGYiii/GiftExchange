@@ -79,3 +79,15 @@ export function shuffleExchangeList(list: string[]): string[] {
   }
   return shuffledList;
 }
+
+export function getMatchedParticipant(
+  list: string[],
+  shuffledList: string[],
+  participant: string
+): string {
+  if (!list.includes(participant))
+    throw new Error("Participant doesn't exists.");
+  const participantIndex = list.indexOf(participant);
+  const matchedParticipant = shuffledList[participantIndex];
+  return matchedParticipant;
+}
