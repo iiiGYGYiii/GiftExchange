@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
-interface Lobby {
+export interface LobbyType {
   lobbyOwner: string;
   participants: string[];
   allHaveParticipated?: boolean;
   shuffledList: string[];
 }
 
-const lobbySchema = new mongoose.Schema<Lobby>(
+const lobbySchema = new mongoose.Schema<LobbyType>(
   {
     lobbyOwner: {
       type: String,
@@ -36,4 +36,18 @@ const lobbySchema = new mongoose.Schema<Lobby>(
   }
 );
 
-export default mongoose.model<Lobby>("Lobby", lobbySchema);
+lobbySchema.set("toJSON", {
+  transform: (
+    _document,
+    returnedObject: LobbyType & { _id: string; __v?: string; id: string }
+  ) => {
+    return {
+      id: returnedObject._id,
+      lobbyOwner: returnedObject.lobbyOwner,
+      participants: returnedObject.participants,
+      shuffledList: returnedObject.shuffledList,
+    };
+  },
+});
+
+export default mongoose.model<LobbyType>("Lobby", lobbySchema);
