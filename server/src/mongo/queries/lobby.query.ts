@@ -6,6 +6,7 @@ import {
   isLastParticipant,
   shuffleExchangeList,
 } from "../../utils/exchange";
+import { autoIncrement } from "./counter.query";
 
 export async function createLobby(
   lobbyOwner: string,
@@ -21,6 +22,7 @@ export async function createLobby(
   };
   const newLobby = new Lobby(lobbyData);
   try {
+    await autoIncrement();
     return await newLobby.save();
   } catch (error) {
     return {
