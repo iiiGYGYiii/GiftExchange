@@ -1,0 +1,27 @@
+:root {
+  --primary-bg-color: #393e46;
+  --secondary-color: #00adb5;
+  --primary-color: #aad8d3;
+  --primary-front-color: #eeeeee;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  color: var(--primary-front-color);
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary-bg-color);
+}
