@@ -20,7 +20,7 @@ app.use(apiV1("ping"), pingRouter);
 app.use(apiV1("lobby"), lobbyRouter);
 
 app.get("*", (_req, res) => {
-  res.sendFile(path.join(PWD + "/client/index.html"));
+  res.sendFile(path.join(PWD + "/client/index.html")); // cmnt
 });
 
 export default app;
