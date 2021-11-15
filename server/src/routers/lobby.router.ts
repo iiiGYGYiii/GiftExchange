@@ -7,7 +7,7 @@ lobbyRouter.route("/").get(async (_req, res) => {
   const count = await getCount();
   res
     .json({
-      timesVisited: count,
+      lobbiesCreated: count,
     })
     .end();
 });

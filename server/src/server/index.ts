@@ -2,7 +2,7 @@ import cors from "cors";
 import morgan from "morgan";
 import express from "express";
 
-import { pingRouter } from "../routers";
+import { lobbyRouter, pingRouter } from "../routers";
 
 const apiV1: (s: string) => string = (route) => `/api/v1/${route}`;
 
@@ -14,5 +14,7 @@ app.use(cors());
 app.use(morgan("tiny"));
 
 app.use(apiV1("ping"), pingRouter);
+
+app.use(apiV1("lobby"), lobbyRouter);
 
 export default app;
