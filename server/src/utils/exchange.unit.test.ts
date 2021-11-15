@@ -1,6 +1,7 @@
 import {
   allHave3MinLength,
   getMatchedParticipant,
+  isLastParticipant,
   listLoops,
   namesDontRepeat,
   shuffleExchangeList,
@@ -13,6 +14,17 @@ describe("Exchange Logic tests", () => {
     expect(allHave3MinLength(truthy)).toBe(true);
     const falsy = [...truthy, "a"];
     expect(allHave3MinLength(falsy)).toBe(false);
+  });
+
+  it("If last participant return true", () => {
+    const testCase = truthy.map((v) => "-" + v);
+    testCase[0] = truthy[0];
+    const lastParticipant = isLastParticipant(testCase, truthy[0]);
+    expect(lastParticipant).toBe(true);
+    const testCase2 = [...testCase];
+    testCase2[0] = truthy[0];
+    testCase2[1] = truthy[1];
+    expect(isLastParticipant(testCase2, truthy[0])).toBe(false);
   });
 
   it("Names don't repeat in array", () => {

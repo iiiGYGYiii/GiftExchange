@@ -91,3 +91,8 @@ export function getMatchedParticipant(
   const matchedParticipant = shuffledList[participantIndex];
   return matchedParticipant;
 }
+
+export function isLastParticipant(list: string[], participant: string) {
+  const remaining = list.filter((s) => !s.startsWith("-"));
+  return remaining.length === 1 && remaining[0] === participant;
+}
