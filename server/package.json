@@ -5,8 +5,10 @@
   "main": "./src/index.ts",
   "scripts": {
     "start": "if(Test-Path -Path ./build){node ./build/index.js}else{npm run run:build}",
-    "run:build": "npm run build && node ./build/index.js",
+    "start:build": "npm run build && node ./build/index.js",
     "build": "tsc",
+    "client:build": "(Test-Path ./build/client)?(rm ./build/client -Recurse -Force):\"PathNotFound\" && cd ../client && npm run build:ui && Copy-Item ./client ../server/build/ -Recurse",
+    "full:build": "npm run build && npm run client:build",
     "dev": "cross-env NODE_ENV=development nodemon ./src/index.ts",
     "lint": "eslint",
     "test": "jest --watch --verbose"
@@ -31,7 +33,6 @@
     "@types/cors": "2.8.12",
     "@types/express": "4.17.13",
     "@types/jest": "^27.0.2",
-    "@types/mongoose": "^5.11.97",
     "@types/morgan": "1.9.3",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "5.3.1",
