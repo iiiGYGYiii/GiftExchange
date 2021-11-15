@@ -8,34 +8,34 @@ export interface LobbyType {
   _id: string;
 }
 
-const lobbySchema = new mongoose.Schema<Omit<LobbyType, "_id">>(
-  {
-    lobbyOwner: {
+const lobbySchema = new mongoose.Schema<LobbyType>({
+  lobbyOwner: {
+    type: String,
+    minlength: 3,
+    required: true,
+  },
+  participants: [
+    {
       type: String,
       minlength: 3,
-      required: true,
     },
-    participants: [
-      {
-        type: String,
-        minlength: 3,
-      },
-    ],
-    shuffledList: [
-      {
-        type: String,
-        minlength: 3,
-      },
-    ],
-    allHaveParticipated: {
-      type: Boolean,
-      default: false,
+  ],
+  shuffledList: [
+    {
+      type: String,
+      minlength: 3,
     },
+  ],
+  allHaveParticipated: {
+    type: Boolean,
+    default: false,
   },
-  {
-    _id: false,
-  }
-);
+  _id: {
+    type: String,
+    required: true,
+    minlength: 9,
+  },
+});
 
 lobbySchema.set("toJSON", {
   transform: (
