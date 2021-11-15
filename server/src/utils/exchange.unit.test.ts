@@ -17,7 +17,7 @@ describe("Exchange Logic tests", () => {
   });
 
   it("If last participant return true", () => {
-    const testCase = truthy.map((v) => "-" + v);
+    const testCase = truthy.map((_) => "undefined");
     testCase[0] = truthy[0];
     const lastParticipant = isLastParticipant(testCase, truthy[0]);
     expect(lastParticipant).toBe(true);

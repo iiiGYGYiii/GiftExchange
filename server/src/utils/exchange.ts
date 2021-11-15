@@ -93,6 +93,6 @@ export function getMatchedParticipant(
 }
 
 export function isLastParticipant(list: string[], participant: string) {
-  const remaining = list.filter((s) => !s.startsWith("-"));
+  const remaining = list.filter((s) => s !== "undefined");
   return remaining.length === 1 && remaining[0] === participant;
 }

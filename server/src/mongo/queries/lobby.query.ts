@@ -12,7 +12,7 @@ export async function createLobby(
   lobbyOwner: string,
   participants: string[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): Promise<any> {
+): Promise<LobbyType | { error: string } | undefined> {
   const shuffledList = shuffleExchangeList(participants);
   const lobbyData: LobbyType = {
     lobbyOwner,
@@ -51,7 +51,7 @@ async function updateListWithFetchedParticipant(
   }
 }
 
-async function killLobby(
+export async function killLobby(
   lobbyId: string
 ): Promise<void | { errorMsg: string }> {
   try {
@@ -74,8 +74,11 @@ export async function fetchMatchedParticipant(
 ): Promise<string | { errorMsg: string }> {
   try {
     const lobby = await Lobby.findById(lobbyId);
-    if (!lobby?.participants.includes(participant))
-      throw new Error("Participant doesn't exist");
+    if (!lobby?.participants.includes(participant)) {
+      if (!lobby?.shuffledList.includes(participant))
+        throw new Error("Participant doesn't exist");
+      throw new Error("Participant already discoverd his match!");
+    }
     const matchedParticipant = getMatchedParticipant(
       lobby.participants,
       lobby.shuffledList,
@@ -84,6 +87,7 @@ export async function fetchMatchedParticipant(
     if (isLastParticipant(lobby.participants, participant)) {
       await killLobby(lobbyId);
     } else {
+      lobby.participants[lobby.participants.indexOf(participant)] = "undefined";
       await updateListWithFetchedParticipant(lobby.participants, lobbyId);
     }
     return matchedParticipant;
