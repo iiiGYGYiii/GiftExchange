@@ -32,7 +32,7 @@ export async function createLobby(
 async function updateListWithFetchedParticipant(
   participants: string[],
   lobbyId: string
-) {
+): Promise<void | { errorMsg: string }> {
   try {
     await Lobby.findByIdAndUpdate(lobbyId, {
       participants,
@@ -49,7 +49,9 @@ async function updateListWithFetchedParticipant(
   }
 }
 
-async function killLobby(lobbyId: string) {
+async function killLobby(
+  lobbyId: string
+): Promise<void | { errorMsg: string }> {
   try {
     await Lobby.findByIdAndDelete(lobbyId);
   } catch (error) {
