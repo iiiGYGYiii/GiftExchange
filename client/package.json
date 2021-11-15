@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "build:ui": "(Test-Path client)?(rm client -Recurse -Force):\"PathNotFound\"&&npm run build && Rename-Item dist client"
   },
   "dependencies": {
     "react": "17.0.0",
