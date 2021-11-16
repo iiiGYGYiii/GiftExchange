@@ -42,13 +42,15 @@ lobbyRouter
     } catch (error) {
       if (error instanceof Error) {
         res.status(400).json({
+          error: true,
           message: error.message,
         });
       }
       res
         .status(400)
         .json({
-          error: "Lobby couldn't be created, please try again later.",
+          error: true,
+          message: "Lobby couldn't be created, please try again later.",
         })
         .end();
     }
