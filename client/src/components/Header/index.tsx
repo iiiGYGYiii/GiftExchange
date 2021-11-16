@@ -1,22 +1,24 @@
+import { Link } from "wouter";
 import "./Header.styles.scss";
+import { routes } from "../../utils/constants";
 
 const Header = () => (
   <header className="app-header">
     <nav className="nav-header-container">
       <div className="nav-header home">
-        <a>
+        <Link to={routes.home}>
           <i className="fas fa-home"></i>
-        </a>
+        </Link>
       </div>
       <div className="nav-header add">
-        <a>
+        <Link to={routes.createLobby}>
           <i className="fas fa-plus"></i>
-        </a>
+        </Link>
       </div>
       <div className="nav-header search">
-        <a>
+        <Link to={routes.searchLobby}>
           <i className="fas fa-search"></i>
-        </a>
+        </Link>
       </div>
     </nav>
   </header>
