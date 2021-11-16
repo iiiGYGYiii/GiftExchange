@@ -14,7 +14,7 @@ export default function PageHOC({
       <header className="page-title">
         <h1 className="glow-fx neon">{title}</h1>
       </header>
-      {component ? component : children}
+      <div className="page-content">{component ? component : children}</div>
     </article>
   );
 }
