@@ -12,6 +12,7 @@
     "axios": "0.24.0",
     "react": "17.0.0",
     "react-dom": "17.0.0",
+    "react-hook-form": "^7.19.5",
     "wouter": "2.8.0-alpha.2"
   },
   "devDependencies": {
