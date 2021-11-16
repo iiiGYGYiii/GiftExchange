@@ -1,7 +1,37 @@
 .home-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  margin: auto;
   height: 100%;
-  width: 100%;
+  width: 85%;
+
+  .social-medias {
+    font-size: 2rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    a {
+      list-style: none;
+      color: #eee;
+      max-width: min-content;
+      margin: auto;
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+
+  .warning-text {
+    background-color: #ffef4a;
+    color: #1f1f29;
+    #warning-word {
+      font-weight: bold;
+      color: red;
+    }
+  }
+  #why {
+    ul,
+    li,
+    ol {
+      list-style: square;
+    }
+  }
 }
