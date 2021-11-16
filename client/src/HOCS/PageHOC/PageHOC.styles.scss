@@ -1,0 +1,14 @@
+.page-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .page-title {
+    max-width: max-content;
+    font-family: "Indie Flower", cursive;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    h1 {
+      padding: 1rem 2rem;
+    }
+  }
+}
