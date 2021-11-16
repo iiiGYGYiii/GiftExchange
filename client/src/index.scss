@@ -1,5 +1,5 @@
 :root {
-  --primary-bg-color: #393e46;
+  --primary-bg-color: #051822;
   --secondary-color: #00adb5;
   --primary-color: #aad8d3;
   --primary-front-color: #eeeeee;
@@ -24,4 +24,71 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--primary-bg-color);
+}
+
+.glow-fx {
+  background: #111;
+  border: none;
+  border-radius: 0.625rem;
+  color: #fff;
+  outline: none;
+  position: relative;
+  z-index: 0;
+
+  &::before {
+    animation: glowing 20s linear infinite;
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+    background-size: 400%;
+    border-radius: 10px;
+    content: "";
+    filter: blur(5px);
+    height: calc(100% + 4px);
+    left: -2px;
+    position: absolute;
+    top: -2px;
+    transition: opacity 0.3s ease-in-out;
+    width: calc(100% + 4px);
+    z-index: -1;
+  }
+  &::after {
+    background: #111;
+    border-radius: 10px;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.neon {
+  color: #fff;
+  text-shadow: 0 0 0.125rem #fff, 0 0 0.25rem #fff, 0 0 0.5rem #fff,
+    0 0 0.75rem #0ff, 0 0 0.875rem #0ff, 0 0 1rem #0ff, 0 0 1.125rem #0ff,
+    0 0 1.25rem #0ff;
 }
