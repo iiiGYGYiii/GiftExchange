@@ -92,3 +92,10 @@ body {
     0 0 0.75rem #0ff, 0 0 0.875rem #0ff, 0 0 1rem #0ff, 0 0 1.125rem #0ff,
     0 0 1.25rem #0ff;
 }
+
+ol,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
