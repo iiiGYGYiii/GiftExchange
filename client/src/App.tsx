@@ -1,6 +1,6 @@
 import "./App.scss";
 import { Header, Footer } from "./components/";
-import { CreateLobbyPage, HomePage, LobbyPage, SearchLobbyPage } from "./pages";
+import { CreateLobbyPage, HomePage, SearchLobbyPage } from "./pages";
 import { PageHOC } from "./HOCS";
 import { Route, Switch } from "wouter";
 import { routes } from "./utils/constants";
@@ -11,9 +11,6 @@ function App() {
       <Header />
       <main>
         <Switch>
-          <Route path={routes.lobby}>
-            <LobbyPage />
-          </Route>
           <Route path={routes.searchLobby}>
             <SearchLobbyPage />
           </Route>
