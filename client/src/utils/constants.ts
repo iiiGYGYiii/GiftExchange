@@ -19,3 +19,5 @@ export const routes: RoutesType = {
 export const apiEndpoints: Endpoints = {
   lobbyEndpoint: "/api/v1/lobby",
 };
+
+export const pageTitle = "DANDO x DANDO";

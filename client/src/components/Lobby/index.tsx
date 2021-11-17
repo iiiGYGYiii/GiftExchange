@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { Notification } from "..";
 import useErrorNotify from "../../hooks/errorNotify.hook";
@@ -20,16 +21,24 @@ export default function Lobby({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const matchedParticipant = await getMatchedPerson(
+      const matchedParticipant = (await getMatchedPerson(
         lobbyId,
         participantSearcher
-      );
-      if (!matchedParticipant.error) {
+      )) as string | { error: number; message: string };
+      if (typeof matchedParticipant === "string") {
         setHasMatched(true);
         setMatchedPair(matchedParticipant);
+        return;
       }
+      updateError({ message: matchedParticipant.message, error: 2 });
     } catch (error) {
-      updateError("No se encontró el nombre en la sala.");
+      if (axios.isAxiosError(error)) {
+        updateError({
+          message: error.response?.data.message,
+          error: 2,
+        });
+        return;
+      }
     }
   };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +72,9 @@ export default function Lobby({
             />
             <input type="submit" value="¿A quién me asignaron?" />
           </form>
-          {error ? <Notification error={true} message={error} /> : null}
+          {error ? (
+            <Notification error={error.error} message={error.message} />
+          ) : null}
         </div>
       )}
     </div>

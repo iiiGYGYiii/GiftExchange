@@ -1,0 +1,31 @@
+.notification {
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  left: 12.5vw;
+  width: 75vw;
+  text-align: center;
+  border: 2px solid;
+  border-radius: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 1.25rem;
+  background-color: #86ff70;
+  color: white;
+  border-color: #24e500;
+  text-shadow: 0 0 0.2rem hsl(125, 100%, 80%), 0 0 0.75rem currentColor;
+  box-shadow: inset 0 0 0.5em 0 #86ff70, 0 0 0.5em 0 #86ff70;
+
+  &.warning {
+    background-color: #ffd900;
+    border-color: #333;
+    text-shadow: 0 0 0.2rem hsl(41, 100%, 50%), 0 0 0.75rem currentColor;
+    box-shadow: inset 0 0 0.5em 0 #ffd900, 0 0 0.5em 0 #ffd900;
+  }
+  &.error {
+    background-color: rgba(255, 91, 91, 0.7);
+    border-color: #e20000;
+    text-shadow: 0 0 0.2rem hsl(1, 67%, 50%), 0 0 0.75rem currentColor;
+    box-shadow: inset 0 0 0.5em 0 #e20000, 0 0 0.5em 0 #e20000;
+  }
+}

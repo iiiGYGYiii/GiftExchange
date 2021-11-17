@@ -3,7 +3,7 @@ import { Header, Footer } from "./components/";
 import { CreateLobbyPage, HomePage, SearchLobbyPage } from "./pages";
 import { PageHOC } from "./HOCS";
 import { Route, Switch } from "wouter";
-import { routes } from "./utils/constants";
+import { pageTitle, routes } from "./utils/constants";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
             </PageHOC>
           </Route>
           <Route path={routes.home}>
-            <PageHOC title="interchanger io">
+            <PageHOC title={pageTitle}>
               <HomePage />
             </PageHOC>
           </Route>

@@ -69,6 +69,21 @@ export async function getMatchedPerson(lobbyId: string, participant: string) {
     }
     return data.matchedParticipant;
   } catch (error) {
+    if (axios.isAxiosError(error)) {
+      if (error.response?.data.message.endsWith("match!")) {
+        return {
+          error: 2,
+          message: "Participante ya descubrió su emparejamiento.",
+        };
+      }
+      if (error.response?.data.message.endsWith("exist")) {
+        return {
+          error: 2,
+          message: "El participante no existe en esta sala.",
+        };
+      }
+      return error.response?.data;
+    }
     return {
       error: true,
       message: "No se encontró el nombre en la sala.",

@@ -27,7 +27,7 @@ export default function DisplayLobby({
   return (
     <div className="display-lobby">
       {copied ? (
-        <Notification message="¡Código copiado al portapapeles!" />
+        <Notification error={0} message="¡Código copiado al portapapeles!" />
       ) : null}
       <h1 className="lobby-title">
         SALA:{" "}

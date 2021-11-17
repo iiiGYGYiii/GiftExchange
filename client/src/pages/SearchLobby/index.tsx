@@ -5,6 +5,11 @@ import { getLobbyOwner } from "../../services/lobby.services";
 
 import "./SearchLobby.styles.scss";
 
+const noLobbyError = {
+  message: "No se encontró el lobby. Por favor verifica el código",
+  error: 2,
+};
+
 export default function SearchLobby() {
   const [lobbyOwner, setLobbyOwner] = useState<string | undefined>();
   const [search, setSearch] = useState<string>("");
@@ -19,15 +24,17 @@ export default function SearchLobby() {
         setLobbyOwner(lobbyOwner);
         return;
       }
-      updateError("No se encontró el lobby. Por favor verifica el código.");
+      updateError(noLobbyError);
     } catch (error) {
-      updateError("No se encontró el lobby. Por favor verifica el código.");
+      updateError(noLobbyError);
     }
   };
   if (lobbyOwner) return <Lobby lobbyId={search} lobbyOwner={lobbyOwner} />;
   return (
     <div className="search-lobby">
-      {error ? <Notification message={error} error={true} /> : null}
+      {error ? (
+        <Notification message={error.message} error={error.error} />
+      ) : null}
       <form onSubmit={handleSubmit}>
         <input
           type="text"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createLobby } from "../services/lobby.services";
 import { postLobbyData } from "../utils/types";
+import useErrorNotify, { NotifyError } from "./errorNotify.hook";
 
 const initialLobbyData: postLobbyData = {
   lobbyOwner: "",
@@ -16,9 +17,24 @@ const nameRepeat: (s: string, a: string[]) => boolean = (
 ) => a.includes(s);
 const checkMinSize: (a: string[]) => boolean = (a) => a.length >= 3;
 
+const minLengthError: NotifyError = {
+  error: 2,
+  message: "Los nombres deben tener mínimo 3 caracteres.",
+};
+
+const minParticipantsError: NotifyError = {
+  error: 2,
+  message:
+    "¡El mínimo número de participantes es 3(tres)! (2 participantes y 1 organizador)",
+};
+
+const noRepeatError: (participant: string) => NotifyError = (participant) => ({
+  error: 2,
+  message: `Los participantes deben tener un nombre único. (Trata: ${participant}1)`,
+});
+
 const useLobbyForm = () => {
-  const [error, setError] = useState<string | undefined>();
-  const [timeoutID, setTimeoutID] = useState<number | undefined>();
+  const [error, updateError] = useErrorNotify();
   const [formData, setFormData] = useState<postLobbyData>(initialLobbyData);
   const [participant, setParticipant] = useState<string>(
     initialParticipantState
@@ -26,25 +42,14 @@ const useLobbyForm = () => {
   const [ownerIsSet, setOwnerIsSet] = useState<boolean>(false);
   const [lobbyId, setLobbyId] = useState<string | undefined>();
 
-  const updateError = (msg: string) => {
-    setError(msg);
-    if (timeoutID) {
-      clearTimeout(timeoutID);
-    }
-    const toID = setTimeout(() => setError(undefined), 5000);
-    setTimeoutID(toID);
-  };
-
   const addOwnerName = (event: React.KeyboardEvent | React.MouseEvent) => {
     if (!checkMinLength(formData.lobbyOwner)) {
-      updateError("Los nombres deben tener mínimo 3 caracteres.");
+      updateError(minLengthError);
       event.preventDefault();
       return;
     }
     if (nameRepeat(formData.lobbyOwner, formData.participants)) {
-      updateError(
-        `Los participantes deben tener un nombre único. (Trata: ${participant}1)`
-      );
+      updateError(noRepeatError(formData.lobbyOwner));
       event.preventDefault();
       return;
     }
@@ -55,16 +60,14 @@ const useLobbyForm = () => {
     event: React.KeyboardEvent | React.MouseEvent
   ) => {
     if (!checkMinLength(participant)) {
-      updateError("Los nombres deben tener mínimo 3 caracteres.");
+      updateError(minLengthError);
       event.preventDefault();
       return;
     }
     if (
       nameRepeat(participant, formData.participants.concat(formData.lobbyOwner))
     ) {
-      updateError(
-        `Los participantes deben tener un nombre único. (Trata: ${participant}1)`
-      );
+      updateError(noRepeatError(participant));
       event.preventDefault();
       return;
     }
@@ -109,9 +112,7 @@ const useLobbyForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!checkMinSize(formData.participants)) {
-      updateError(
-        "¡El mínimo número de participantes es 3(tres)! (2 participantes y 1 organizador)"
-      );
+      updateError(minParticipantsError);
       return;
     }
     const result = (await createLobby(formData)) as { lobbyId: string };
