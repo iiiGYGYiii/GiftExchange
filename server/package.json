@@ -4,11 +4,12 @@
   "description": "Server for the gift exchange server.",
   "main": "./src/index.ts",
   "scripts": {
-    "start": "if(Test-Path -Path ./build){node ./build/index.js}else{npm run run:build}",
+    "start": "npm run full:start",
     "start:build": "npm run build && node ./build/index.js",
     "build": "tsc",
     "client:build": "(Test-Path ./build/client)?(rm ./build/client -Recurse -Force):\"PathNotFound\" && cd ../client && npm run build:ui && Copy-Item ./client ../server/build/ -Recurse",
     "full:build": "npm run build && npm run client:build",
+    "full:start": "npm run full:build && node ./build/index.js",
     "dev": "cross-env NODE_ENV=development nodemon ./src/index.ts",
     "lint": "eslint",
     "test": "jest --watch --verbose"
@@ -52,5 +53,8 @@
     "express": "4.17.1",
     "mongoose": "^6.0.12",
     "morgan": "1.10.0"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
