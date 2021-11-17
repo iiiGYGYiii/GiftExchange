@@ -7,6 +7,7 @@ import {
   TableInput,
   Notification,
   DisplayLobby,
+  Participants,
 } from "../../components";
 
 export default function CreateLobby() {
@@ -46,7 +47,7 @@ export default function CreateLobby() {
             inputValue={lobbyOwner}
             handleKey={handleOwnerKey}
             handleChange={handleOwnerChange}
-            textButton="Declararse"
+            textButton="¡OK!"
             handleClick={handleOwnerClick}
             disabled={ownerIsSet}
             required={true}
@@ -62,9 +63,7 @@ export default function CreateLobby() {
           />
         </>
       </TableForm>
-      {participants.map((p) => (
-        <p key={p}>{p}</p>
-      ))}
+      <Participants participants={participants} />
     </div>
   );
 }

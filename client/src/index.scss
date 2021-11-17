@@ -3,6 +3,10 @@
   --secondary-color: #00adb5;
   --primary-color: #aad8d3;
   --primary-front-color: #eeeeee;
+  --color-bg: rgb(5, 18, 22);
+  --color-neon: #00fdff;
+  --clr-neon: hsl(317 100% 54%);
+  --clr-bg: hsl(323 21% 16%);
 }
 
 html {
@@ -23,7 +27,7 @@ body {
     "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--primary-bg-color);
+  background-color: var(--color-bg);
 }
 
 .glow-fx {

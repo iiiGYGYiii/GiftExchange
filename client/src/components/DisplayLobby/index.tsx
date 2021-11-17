@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { Notification } from "..";
+import { Notification, Participants } from "..";
 
 import "./DisplayLobby.styles.scss";
 
@@ -43,13 +43,7 @@ export default function DisplayLobby({
       <h2>Organizador: {lobbyOwner}</h2>
       <div className="participants-container">
         <h3>Participantes: ({participants.length + 1})</h3>
-        <div className="participants-display">
-          {participants.map((participant) => (
-            <div key={participant} className="participant">
-              {participant}
-            </div>
-          ))}
-        </div>
+        <Participants participants={participants} />
       </div>
     </div>
   );

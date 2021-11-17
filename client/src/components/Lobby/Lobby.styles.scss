@@ -1,0 +1,131 @@
+.lobby-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 85%;
+  margin: auto;
+  header {
+    text-align: center;
+
+    h1 {
+      span {
+        color: #7dedff;
+      }
+    }
+    h2 {
+      span {
+        color: #88fff7;
+      }
+    }
+  }
+
+  .matcher-form {
+    width: 100%;
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: auto;
+      input {
+        background: none;
+        border: none;
+        &:active,
+        &:focus {
+          border: none;
+        }
+      }
+      input[type="text"] {
+        border-bottom: 1px #eee solid;
+        font-size: 2rem;
+        color: #eee;
+        text-align: center;
+        &:active,
+        &:focus {
+          background: rgba(178, 253, 248, 0.712);
+          color: var(--primary-bg-color);
+        }
+      }
+
+      input[type="submit"] {
+        background-color: #88fff7;
+        cursor: pointer;
+        color: var(--primary-bg-color);
+        border: 2px white solid;
+        border-radius: 1rem;
+        font-size: 1.375rem;
+        font-weight: bold;
+        max-width: min-content;
+        padding: 0.25rem 1rem;
+        margin: auto;
+        margin-top: 2rem;
+        box-shadow: inset 0 0 0.5em 0 var(--color-neon),
+          0 0 0.5em 0 var(--color-neon);
+        &:hover {
+          background-color: #50f0e5;
+        }
+        &:active {
+          background-color: #52bdb6;
+        }
+      }
+    }
+  }
+
+  .display-matched {
+    margin-bottom: 5rem;
+    text-align: center;
+    .matched-neon {
+      font-size: 2.5rem;
+      display: inline-block;
+      border: var(--color-neon) 4px solid;
+      letter-spacing: 1px;
+      padding: 0.25rem 1rem;
+      font-weight: bold;
+      border-radius: 0.25rem;
+      text-shadow: 0 0 0.2rem hsl(0, 0%, 100%), 0 0 0.75rem currentColor;
+      box-shadow: inset 0 0 0.5em 0 var(--color-neon),
+        0 0 0.5em 0 var(--color-neon);
+      position: relative;
+      text-align: center;
+      transition: background 100ms linear;
+      &::before {
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 140%;
+        left: 0;
+        background: var(--color-neon);
+        transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+        filter: blur(1em);
+        opacity: 0.6;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        box-shadow: 0 0 2em 0.5em var(--color-neon);
+        transition: opacity 100ms linear;
+        opacity: 0;
+        -webkit-transition: opacity 100ms linear;
+        -moz-transition: opacity 100ms linear;
+        -ms-transition: opacity 100ms linear;
+        -o-transition: opacity 100ms linear;
+      }
+      &:hover {
+        background: var(--color-neon);
+        color: var(--color-bg);
+        text-shadow: 0;
+        &::after,
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

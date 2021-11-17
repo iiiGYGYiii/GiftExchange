@@ -38,16 +38,29 @@ export default function Lobby({
   return (
     <div className="lobby-container">
       <header>
-        <h1>SALA: {lobbyId}</h1>
-        <h2>ORGANIZADOR: {lobbyOwner}</h2>
+        <h1>
+          SALA: <span>{lobbyId}</span>
+        </h1>
+        <h2>
+          ORGANIZADOR: <span>{lobbyOwner}</span>
+        </h2>
       </header>
 
       {hasMatched ? (
-        <div className="display-matched">{matchedPair}</div>
+        <div className="display-matched">
+          <h2>El destino te asignó:</h2>
+          <div className="matched-neon">{matchedPair}</div>
+        </div>
       ) : (
         <div className="matcher-form">
           <form onSubmit={handleSubmit}>
-            <input onChange={handleChange} value={participantSearcher} />
+            <input
+              placeholder="Tu nombre aquí"
+              type="text"
+              onChange={handleChange}
+              value={participantSearcher}
+              required
+            />
             <input type="submit" value="¿A quién me asignaron?" />
           </form>
           {error ? <Notification error={true} message={error} /> : null}

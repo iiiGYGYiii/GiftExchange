@@ -30,6 +30,7 @@ export default function TableInput({
       </td>
       <td>
         <input
+          type="text"
           value={inputValue}
           onKeyPress={handleKey}
           onChange={handleChange}

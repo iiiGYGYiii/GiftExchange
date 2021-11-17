@@ -15,7 +15,9 @@ function App() {
             <SearchLobbyPage />
           </Route>
           <Route path={routes.createLobby}>
-            <CreateLobbyPage />
+            <PageHOC title="CREAR SALA">
+              <CreateLobbyPage />
+            </PageHOC>
           </Route>
           <Route path={routes.home}>
             <PageHOC title="interchanger">

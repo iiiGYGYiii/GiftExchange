@@ -32,7 +32,12 @@ export default function SearchLobby() {
         <h1>BUSCADOR DE SALAS:</h1>
       </header>
       <form onSubmit={handleSubmit}>
-        <input value={search} onChange={(e) => setSearch(e.target.value)} />
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          pattern="[0-9]+"
+        />
         <button>
           <i className="fas fa-search"></i>
         </button>
