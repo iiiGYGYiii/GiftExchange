@@ -1,4 +1,5 @@
 import { CardHOC, CarouselHOC } from "../../HOCS";
+import { pageTitle } from "../../utils/constants";
 
 import "./Home.styles.scss";
 
@@ -8,8 +9,8 @@ export default function Home() {
       <CarouselHOC>
         <CardHOC id="welcome" title="¡Bienvenido!">
           <p>
-            ¡En <span>interchanger</span> te damos la solución para organizar
-            los intercambios de regalo!
+            ¡En <span className="span-title">{pageTitle}</span> te damos la
+            solución para organizar los intercambios de regalo!
           </p>
         </CardHOC>
         <CardHOC id="why" title="¿Por qué?">
@@ -51,17 +52,29 @@ export default function Home() {
         <CardHOC id="socials" title="Acerca de mí">
           <>
             <p>
-              ¡Hola! Soy <span>iiiGYGYiii</span>!
+              ¡Hola! Soy <span className="span-iiigygyiii">iiiGYGYiii</span>!
             </p>
             <p>Puedes encontrarme en las siguientes redes sociales:</p>
             <div className="social-medias">
-              <a href="http://www.facebook.com/iiiGYGYiii">
+              <a
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+                href="http://www.facebook.com/iiiGYGYiii"
+              >
                 <i className="fab fa-facebook"></i>
               </a>
-              <a href="http://www.twitter.com/iiiGYGYiii">
+              <a
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+                href="http://www.twitter.com/iiiGYGYiii"
+              >
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="http://www.instagram.com/iiiGYGYiii">
+              <a
+                rel="noopener noreferrer nofollow"
+                target="_blank"
+                href="http://www.instagram.com/iiiGYGYiii"
+              >
                 <i className="fab fa-instagram"></i>
               </a>
             </div>

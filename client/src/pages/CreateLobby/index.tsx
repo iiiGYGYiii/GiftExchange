@@ -38,7 +38,9 @@ export default function CreateLobby() {
 
   return (
     <div className="lobby-create-container">
-      {error ? <Notification message={error} error={true} /> : null}
+      {error ? (
+        <Notification message={error.message} error={error.error} />
+      ) : null}
       <TableForm submitText="¡Crear Sala!" handleSubmit={handleSubmit}>
         <>
           <TableInput

@@ -94,6 +94,16 @@ lobbyRouter
       participant,
       lobbyId
     );
+    if (typeof matchedParticipant !== "string") {
+      res
+        .status(403)
+        .json({
+          error: true,
+          message: matchedParticipant.errorMsg,
+        })
+        .end();
+      return;
+    }
     res
       .status(200)
       .json({

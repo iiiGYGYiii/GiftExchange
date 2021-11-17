@@ -4,7 +4,13 @@ const Footer = () => (
   <footer>
     <p>
       Made with ❤ by:{" "}
-      <a href="http://www.instagram.com/iiiGYGYiii">iiiGYGYiii</a>
+      <a
+        rel="noopener noreferrer nofollow"
+        target="_blank"
+        href="http://www.instagram.com/iiiGYGYiii"
+      >
+        iiiGYGYiii
+      </a>
     </p>
   </footer>
 );
