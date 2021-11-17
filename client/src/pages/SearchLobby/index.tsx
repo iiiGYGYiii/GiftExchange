@@ -28,9 +28,6 @@ export default function SearchLobby() {
   return (
     <div className="search-lobby">
       {error ? <Notification message={error} error={true} /> : null}
-      <header>
-        <h1>BUSCADOR DE SALAS:</h1>
-      </header>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

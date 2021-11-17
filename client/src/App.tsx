@@ -12,7 +12,9 @@ function App() {
       <main>
         <Switch>
           <Route path={routes.searchLobby}>
-            <SearchLobbyPage />
+            <PageHOC title="BUSCAR SALA">
+              <SearchLobbyPage />
+            </PageHOC>
           </Route>
           <Route path={routes.createLobby}>
             <PageHOC title="CREAR SALA">
