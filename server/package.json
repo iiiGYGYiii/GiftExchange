@@ -11,6 +11,8 @@
     "full:build": "npm run build && npm run client:build",
     "full:start": "npm run full:build && node ./build/index.js",
     "dev": "cross-env NODE_ENV=development nodemon ./src/index.ts",
+    "heroku:deploy": "cd .. && git subtree push --prefix server heroku main",
+    "full:deploy": "npm run full:build && npm run heroku:deploy",
     "lint": "eslint",
     "test": "jest --watch --verbose"
   },

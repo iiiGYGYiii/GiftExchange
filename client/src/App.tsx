@@ -22,7 +22,7 @@ function App() {
             </PageHOC>
           </Route>
           <Route path={routes.home}>
-            <PageHOC title="interchanger">
+            <PageHOC title="interchanger io">
               <HomePage />
             </PageHOC>
           </Route>
