@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./build/index.js",
     "start:build": "npm run build && node ./build/index.js",
-    "build": "(Test-Path ./build)?(rm ./build -Recurse -Force):\"PathNotFound\" && tsc",
+    "build": "tsc",
     "client:build": "(Test-Path ./build/client)?(rm ./build/client -Recurse -Force):\"PathNotFound\" && cd ../client && npm run build:ui && Copy-Item ./client ../server/build/ -Recurse",
     "full:build": "npm run build && npm run client:build",
     "full:start": "npm run full:build && node ./build/index.js",
