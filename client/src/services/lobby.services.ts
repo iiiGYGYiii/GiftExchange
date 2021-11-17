@@ -41,14 +41,37 @@ export async function getLobbyOwner(
   lobbyId: string
 ): Promise<{ lobbyOwner: string } | { error: string }> {
   try {
-    const { data } = await axios.get<LobbyFetchType>(
+    const { data, status } = await axios.get<LobbyFetchType>(
       `${apiEndpoints.lobbyEndpoint}/${lobbyId}`
     );
-    if (data.error) return { error: data.message };
+    if (data.error || status !== 200) return { error: data.message };
     return {
       lobbyOwner: data.lobbyOwner,
     };
   } catch (error) {
     return { error: "No se encontró la sala." };
+  }
+}
+
+export async function getMatchedPerson(lobbyId: string, participant: string) {
+  try {
+    const { data } = await axios.post(
+      `${apiEndpoints.lobbyEndpoint}/${lobbyId}`,
+      {
+        participant,
+      }
+    );
+    if (data.matchedParticipant.errorMsg) {
+      return {
+        error: true,
+        message: data.matchedParticipant.errorMsg,
+      };
+    }
+    return data.matchedParticipant;
+  } catch (error) {
+    return {
+      error: true,
+      message: "No se encontró el nombre en la sala.",
+    };
   }
 }
