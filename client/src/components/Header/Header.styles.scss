@@ -1,0 +1,40 @@
+.app-header {
+  height: 2.75rem;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0.25rem auto;
+  .nav-header-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .nav-header {
+      align-items: center;
+      cursor: pointer;
+      background-color: #aad8d365;
+      border-radius: 100%;
+      color: var(--secondary-color);
+      display: flex;
+      font-size: 1.5rem;
+      height: 2.25rem;
+      justify-content: space-around;
+      width: 2.25rem;
+      &:hover {
+        background-color: #aad8d3;
+        color: var(--color-neon);
+        text-shadow: 0 0 0.2rem hsl(0, 0%, 100%), 0 0 0.75rem currentColor;
+        box-shadow: inset 0 0 0.5em 0 var(--color-neon),
+          0 0 0.5em 0 var(--color-neon);
+      }
+      &.add {
+        width: 2.75rem;
+        height: 2.75rem;
+        font-size: 2.5rem;
+      }
+    }
+  }
+}

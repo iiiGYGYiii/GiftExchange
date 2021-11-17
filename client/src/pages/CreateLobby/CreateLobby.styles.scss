@@ -1,0 +1,69 @@
+.lobby-create-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  form {
+    width: min-content;
+    table {
+      td {
+        height: 5rem;
+      }
+      label {
+        font-size: 0.75rem;
+      }
+      input[type="text"] {
+        background: none;
+        border: none;
+        border-bottom: 2px solid #eee;
+        color: var(--secondary-color);
+        font-size: 1.25rem;
+        margin: auto 0.5rem;
+        width: 11rem;
+        text-align: center;
+        font-weight: bold;
+        &:active,
+        &:focus {
+          color: #111;
+          border: none;
+          background: rgb(199, 199, 199);
+        }
+      }
+      input[type="button"] {
+        background: none;
+        border: none;
+        color: var(--primary-color);
+        font-weight: bold;
+        border: 1px solid var(--color-neon);
+        border-radius: 0.3rem;
+      }
+    }
+    input[type="submit"] {
+      margin: 2rem auto;
+      background: none;
+      border: none;
+      font-size: 25px;
+      height: 60px;
+      width: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-family: "Balsamiq Sans", cursive;
+      text-decoration: none;
+      color: var(--clr-neon);
+      border: var(--clr-neon) 3px solid;
+      background-color: transparent;
+      border-radius: 0.25em;
+      text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+      box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+      transition: all 0.5s;
+      &:hover {
+        background-color: var(--clr-neon);
+        color: #fff;
+      }
+    }
+  }
+}

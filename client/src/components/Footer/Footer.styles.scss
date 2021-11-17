@@ -1,0 +1,21 @@
+footer {
+  height: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #32c1cd;
+  font-weight: bold;
+
+  p {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1px;
+
+    a {
+      text-decoration: none;
+      color: #544179;
+      font-family: "Balsamiq Sans", cursive;
+      font-weight: bold;
+    }
+  }
+}

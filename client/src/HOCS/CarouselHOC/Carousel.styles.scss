@@ -1,0 +1,175 @@
+.carousel {
+  position: relative;
+  height: 100%;
+
+  &:hover .carousel-snapper,
+  &:focus-within .carousel-snapper {
+    animation-name: none;
+  }
+
+  .carousel-viewport,
+  .carousel-slide {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .carousel-viewport {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+
+    height: 100%;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex: 0 0 100%;
+      width: 100%;
+
+      .carousel-prev,
+      .carousel-next {
+        position: absolute;
+        bottom: 0;
+        z-index: 2;
+        color: #eee;
+        font-size: 2rem;
+      }
+
+      .carousel-prev {
+        left: 0;
+      }
+      .carousel-next {
+        right: 0;
+      }
+
+      &:last-child .carousel-snapper {
+        animation-name: tostart, snap;
+      }
+
+      .carousel-snapper {
+        position: absolute;
+        width: 100%;
+        scroll-snap-align: center;
+        animation-name: tonext, snap;
+        animation-timing-function: ease-in-out;
+        animation-duration: 6s;
+        animation-iteration-count: infinite;
+      }
+      // WARNING HERE PLEASE
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -40%, 70px);
+        color: #fff;
+        font-size: 2em;
+      }
+    }
+  }
+
+  .carousel__navigation {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+
+    nav {
+      padding-bottom: 0.51rem;
+    }
+    .carousel__navigation-list,
+    .carousel__navigation-item {
+      display: inline-block;
+    }
+
+    .carousel__navigation-button {
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      background-color: var(--primary-front-color);
+      background-clip: content-box;
+      border: 0.25rem solid transparent;
+      border-radius: 50%;
+      font-size: 0;
+      transition: transform 0.1s;
+    }
+  }
+}
+
+@keyframes tonext {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: 100%;
+  }
+  98% {
+    left: 100%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes tostart {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: -500%;
+  }
+  98% {
+    left: -500%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes snap {
+  96% {
+    scroll-snap-align: center;
+  }
+  97% {
+    scroll-snap-align: none;
+  }
+  99% {
+    scroll-snap-align: none;
+  }
+  100% {
+    scroll-snap-align: center;
+  }
+}
+
+@media (hover: hover) {
+  .carousel-snapper {
+    animation-name: tonext, snap;
+    animation-timing-function: ease;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+  }
+
+  .carousel-slide:last-child .carousel-snapper {
+    animation-name: tostart, snap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-snapper {
+    animation-name: none;
+  }
+}
