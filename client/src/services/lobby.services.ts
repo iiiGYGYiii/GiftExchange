@@ -25,3 +25,30 @@ export async function createLobby(
     };
   }
 }
+
+interface FetchedRight {
+  lobbyOwner: string;
+}
+
+interface FetchedWrong {
+  error: boolean;
+  message: string;
+}
+
+type LobbyFetchType = FetchedRight & FetchedWrong;
+
+export async function getLobbyOwner(
+  lobbyId: string
+): Promise<{ lobbyOwner: string } | { error: string }> {
+  try {
+    const { data } = await axios.get<LobbyFetchType>(
+      `${apiEndpoints.lobbyEndpoint}/${lobbyId}`
+    );
+    if (data.error) return { error: data.message };
+    return {
+      lobbyOwner: data.lobbyOwner,
+    };
+  } catch (error) {
+    return { error: "No se encontró la sala." };
+  }
+}
