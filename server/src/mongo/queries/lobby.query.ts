@@ -102,3 +102,15 @@ export async function fetchMatchedParticipant(
     };
   }
 }
+
+export async function fetchLobbyAndOwner(
+  lobbyId: string
+): Promise<string | undefined> {
+  try {
+    const foundLobby = await Lobby.findById(lobbyId);
+    if (foundLobby) return foundLobby.lobbyOwner;
+    return undefined;
+  } catch (error) {
+    return undefined;
+  }
+}

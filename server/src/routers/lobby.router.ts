@@ -2,6 +2,7 @@ import { Router } from "express";
 import { LobbyType } from "../mongo/models/Lobby.model";
 import {
   createLobby,
+  fetchLobbyAndOwner,
   fetchMatchedParticipant,
   killLobby,
 } from "../mongo/queries/lobby.query";
@@ -58,6 +59,32 @@ lobbyRouter
 
 lobbyRouter
   .route("/:lobbyId")
+  .get(async (req, res) => {
+    const { lobbyId } = req.params;
+    try {
+      const lobbyOwner = await fetchLobbyAndOwner(lobbyId);
+      if (lobbyOwner) {
+        res
+          .status(200)
+          .json({
+            lobbyOwner,
+          })
+          .end();
+        return;
+      }
+      res
+        .status(404)
+        .json({
+          message: "Lobby not found",
+          error: true,
+        })
+        .end();
+    } catch (error) {
+      res.status(404).json({
+        lobbyOwner: "Not found",
+      });
+    }
+  })
   .post(async (req, res) => {
     const { lobbyId } = req.params;
     const { participant } = req.body as {
