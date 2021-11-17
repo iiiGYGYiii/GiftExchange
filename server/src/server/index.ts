@@ -1,4 +1,3 @@
-import cors from "cors";
 import morgan from "morgan";
 import express from "express";
 import path from "path";
@@ -13,7 +12,7 @@ const app = express();
 app.use(express.static(path.join(PWD)));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+if (process.env.NODE_ENV === "development") app.use(require("cors")());
 app.use(morgan("tiny"));
 
 app.use(apiV1("ping"), pingRouter);
