@@ -11,14 +11,14 @@
   "dependencies": {
     "axios": "0.24.0",
     "react": "17.0.0",
-    "react-copy-to-clipboard": "^5.0.4",
+    "react-copy-to-clipboard": "5.0.4",
     "react-dom": "17.0.0",
-    "react-hook-form": "^7.19.5",
+    "react-hook-form": "7.19.5",
     "wouter": "2.8.0-alpha.2"
   },
   "devDependencies": {
     "@types/react": "17.0.0",
-    "@types/react-copy-to-clipboard": "^5.0.2",
+    "@types/react-copy-to-clipboard": "5.0.2",
     "@types/react-dom": "17.0.0",
     "@typescript-eslint/eslint-plugin": "5.3.1",
     "@typescript-eslint/parser": "5.3.1",
