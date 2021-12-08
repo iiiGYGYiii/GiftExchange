@@ -7,8 +7,11 @@ import {
   killLobby,
 } from "../mongo/queries/lobby.query";
 import { getCount } from "../mongo/queries/counter.query";
+import { cleanInputMiddleware } from "../server/middlewares";
 
 const lobbyRouter = Router();
+
+lobbyRouter.use(cleanInputMiddleware);
 
 lobbyRouter
   .route("/")
