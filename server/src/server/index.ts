@@ -12,14 +12,15 @@ const app = express();
 app.use(express.static(path.join(PWD)));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-if (process.env.NODE_ENV === "development") app.use(require("cors")());
+if (process.env.NODE_ENV === "development") app.use(require("cors")()); // eslint-disable-line
+
 app.use(morgan("tiny"));
 
 app.use(apiV1("ping"), pingRouter);
 app.use(apiV1("lobby"), lobbyRouter);
 
 app.get("*", (_req, res) => {
-  res.sendFile(path.join(PWD + "/index.html")); // cmnt
+  res.sendFile(path.join(PWD + "/index.html"));
 });
 
 export default app;
